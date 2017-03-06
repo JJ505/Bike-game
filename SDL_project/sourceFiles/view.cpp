@@ -103,14 +103,14 @@ bool loadMedia()
 	bool success = true;
 
 	//Load Bike' texture
-	if( !gBikeTexture.loadFromFile( "bike.png" , gRenderer) )
+	if( !gBikeTexture.loadFromFile( "resources/bike.png" , gRenderer) )
 	{
 		printf( "Failed to load Bike' texture image!\n" );
 		success = false;
 	}
 	
 	//Load background texture
-	if( !gRoadTexture.loadFromFile( "road.png" , gRenderer) )
+	if( !gRoadTexture.loadFromFile( "resources/road.png" , gRenderer) )
 	{
 		printf( "Failed to load background texture image!\n" );
 		success = false;
@@ -130,7 +130,7 @@ bool loadMedia()
 		gSpriteClips[1].h = 700;
 
 	}
-	if (!gFarBackgroundTexture.loadFromFile("akiraBack.png", gRenderer))
+	if (!gFarBackgroundTexture.loadFromFile("resources/akiraBack.png", gRenderer))
 	{
 		printf("Failed to load farbackground texture image!\n");
 		success = false;
@@ -193,18 +193,7 @@ int main( int argc, char* args[] )
 					{
 						quit = true;
 					}
-					//add in key presses
-					//maybe have character stay still but can hit the people riding up next
-					//hit them at quick time events
 					
-					//this game will be lazy biker
-					//i think i will leave the player in the middle and have other people approach
-					//have attacking other people
-
-					//need player to have stats
-					//have health bar at bottom
-					//player can attack others
-					//enemy will also attack player but will have diff animations 
 				}
 
 				//Clear screen
