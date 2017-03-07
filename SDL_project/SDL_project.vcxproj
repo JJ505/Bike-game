@@ -19,14 +19,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="sourceFiles\gameModel.cpp" />
-    <ClCompile Include="sourceFiles\ltexture.cpp" />
-    <ClCompile Include="sourceFiles\player.cpp" />
-    <ClCompile Include="sourceFiles\view.cpp" />
+    <ClCompile Include="sourceFiles\Controller.cpp" />
+    <ClCompile Include="sourceFiles\GameModel.cpp" />
+    <ClCompile Include="sourceFiles\Ltexture.cpp" />
+    <ClCompile Include="sourceFiles\Main.cpp" />
+    <ClCompile Include="sourceFiles\Player.cpp" />
+    <ClCompile Include="sourceFiles\View.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="headerFiles\ltexture.h" />
-    <ClInclude Include="headerFiles\player.h" />
+    <ClInclude Include="headerFiles\Controller.h" />
+    <ClInclude Include="headerFiles\GameModel.h" />
+    <ClInclude Include="headerFiles\Ltexture.h" />
+    <ClInclude Include="headerFiles\Player.h" />
+    <ClInclude Include="headerFiles\View.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F36ACBD4-E8B2-4905-8160-6CA9EE7E1D8E}</ProjectGuid>

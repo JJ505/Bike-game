@@ -2,12 +2,7 @@
 and may not be redistributed without written permission.*/
 
 //Using SDL, SDL_image, standard IO, and strings
-#include <SDL.h>
-#include <SDL_image.h>
-#include <stdio.h>
-#include <string>
-
-#include <ltexture.h>
+#include <View.h>
 
 //add header files of other class objects made and include in here
 //practice first with taking out ltexture class
@@ -15,17 +10,6 @@ and may not be redistributed without written permission.*/
 const int SCREEN_WIDTH = 1100;
 const int SCREEN_HEIGHT = 700;
 
-//Texture wrapper class
-
-
-//Starts up SDL and creates window
-bool init();
-
-//Loads media
-bool loadMedia();
-
-//Frees media and shuts down SDL
-void close();
 
 //The window we'll be rendering to
 SDL_Window* gWindow = NULL;
@@ -42,8 +26,11 @@ LTexture gBikeTexture;
 LTexture gRoadTexture;
 LTexture gFarBackgroundTexture;
 
+View::View() {
 
-bool init()
+}
+
+bool View::init()
 {
 	//Initialization flag
 	bool success = true;
@@ -97,7 +84,7 @@ bool init()
 	return success;
 }
 
-bool loadMedia()
+bool View::loadMedia()
 {
 	//Loading success flag
 	bool success = true;
@@ -139,7 +126,7 @@ bool loadMedia()
 	return success;
 }
 
-void close()
+void View::close()
 {
 	//Free loaded images
 	gBikeTexture.free();
@@ -156,7 +143,42 @@ void close()
 	IMG_Quit();
 	SDL_Quit();
 }
+//change this to render, and the main game loop will call these commands when necessary
+//render returns the frame that was last renderered
+int View::render(int frame)
+{
+	//Clear screen
+	SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+	SDL_RenderClear(gRenderer);
 
+	//Render far background to screen
+	gFarBackgroundTexture.render(0, 0, NULL, gRenderer);
+
+	//Render background texture to screen
+	//slows down animation of road by rendering one of the two frames each 30 frames
+	SDL_Rect* currentClip = &gSpriteClips[frame / 30];
+	gRoadTexture.render((SCREEN_WIDTH - currentClip->w) / 2, (SCREEN_HEIGHT - currentClip->h) / 2, currentClip, gRenderer);
+
+	//Render Bike' to the screen
+	gBikeTexture.render(240, 190, NULL, gRenderer);
+
+	//Update screen
+	SDL_RenderPresent(gRenderer);
+
+	++frame;
+	//printf("frame is %d\n frame / 30 is %d", frame, frame/30);
+	if (frame / 30 >= ROAD_FRAMES)
+	{
+		frame = 0;
+	}
+
+	//Free resources and close SDL
+	//close();
+
+	return frame;
+
+}
+/**
 int main( int argc, char* args[] )
 {
 	//Start up SDL and create window
@@ -229,3 +251,4 @@ int main( int argc, char* args[] )
 
 	return 0;
 }
+**/

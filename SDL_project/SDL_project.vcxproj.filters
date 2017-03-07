@@ -15,24 +15,39 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="sourceFiles\ltexture.cpp">
+    <ClCompile Include="sourceFiles\Controller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sourceFiles\gameModel.cpp">
+    <ClCompile Include="sourceFiles\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sourceFiles\player.cpp">
+    <ClCompile Include="sourceFiles\GameModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sourceFiles\view.cpp">
+    <ClCompile Include="sourceFiles\Ltexture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sourceFiles\Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sourceFiles\View.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="headerFiles\ltexture.h">
+    <ClInclude Include="headerFiles\Controller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headerFiles\player.h">
+    <ClInclude Include="headerFiles\Ltexture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headerFiles\Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headerFiles\View.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headerFiles\GameModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
