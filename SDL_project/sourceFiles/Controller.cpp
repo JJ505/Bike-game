@@ -13,6 +13,8 @@ Controller::Controller(View* _view, GameModel* _gameModel)
 
 
 void Controller::startGame() {
+	Uint32 time = 0;
+
 	if (!view->init())
 	{
 		printf("Failed to initialize!\n");
@@ -28,7 +30,7 @@ void Controller::startGame() {
 		{
 			//Main loop flag
 			bool quit = false;
-
+			bool quickTime = false;
 			//Event handler
 			SDL_Event e;
 
@@ -46,9 +48,32 @@ void Controller::startGame() {
 					{
 						quit = true;
 					}
+					if (quickTime && e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_q)
+					{
+						quickTime = false;
+						//signal gameModel when quiktime buttone clicked with timing
+						//gamemodel will update the player in negative or positive manner
+						if (gameModel->fireQuickTime(SDL_GetTicks())) {
+							//send update to view quicktime of good
+						}
+						else
+						{
+							//send update to view the bad quicktime
+						}
 
-				}//renders the image and returns the frame number rendered
-				 //may change this
+					}
+					//time = SDL_GetTicks();
+
+				}
+				//notifies gameModel to possible spawnEnemies
+				//printf("time is now %d\n", SDL_GetTicks());
+				if (gameModel->spawnEnemies())
+				{
+					//there may be multiple quicktime events?
+					quickTime = true;
+					//the view will also be updated to show a key on the screen
+				}
+				//renders the image and returns the frame number rendered
 				frame = view->render(frame);
 			}
 		}
