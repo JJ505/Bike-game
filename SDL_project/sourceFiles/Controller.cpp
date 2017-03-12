@@ -53,17 +53,12 @@ void Controller::startGame() {
 						//signal gameModel when quiktime buttone clicked with timing
 						//gamemodel will update the player in negative or positive manner
 						if (gameModel->fireQuickTime(SDL_GetTicks())) {
-							//show image of timely fire
-							//send update to view quicktime of good
 							quickRenderValue = GOOD_QUIK_TEXTURE;
 							
 						}
 						else
 						{
 							quickRenderValue = UNTIMELY_QUIK_TEXTURE;
-							
-							//show image of untimely fire
-							//send update to view the bad quicktime
 						}
 					}
 				}
