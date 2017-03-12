@@ -7,14 +7,13 @@ Controller::Controller(View* _view, GameModel* _gameModel)
 {
 	view = _view;
 	gameModel = _gameModel;
-
 	
 }
 
 
 void Controller::startGame() {
-	Uint32 time = 0;
-
+	Uint32 initiatedQuickTime = 0;
+	int quickRenderValue = NO_QUIK_TEXTURE;
 	if (!view->init())
 	{
 		printf("Failed to initialize!\n");
@@ -54,27 +53,45 @@ void Controller::startGame() {
 						//signal gameModel when quiktime buttone clicked with timing
 						//gamemodel will update the player in negative or positive manner
 						if (gameModel->fireQuickTime(SDL_GetTicks())) {
+							//show image of timely fire
 							//send update to view quicktime of good
+							quickRenderValue = GOOD_QUIK_TEXTURE;
+							
 						}
 						else
 						{
+							quickRenderValue = UNTIMELY_QUIK_TEXTURE;
+							
+							//show image of untimely fire
 							//send update to view the bad quicktime
 						}
-
 					}
-					//time = SDL_GetTicks();
-
 				}
+				if (SDL_GetTicks() - initiatedQuickTime > 1700) {
+					quickTime = false;
+					quickRenderValue = NO_QUIK_TEXTURE;
+					//show screen flash red?
+				}
+				else if (quickTime && SDL_GetTicks() - initiatedQuickTime > 1200) {
+					printf("decidedly Too late\n");
+					quickRenderValue = BAD_QUIK_TEXTURE;
+				}
+
 				//notifies gameModel to possible spawnEnemies
-				//printf("time is now %d\n", SDL_GetTicks());
 				if (gameModel->spawnEnemies())
 				{
 					//there may be multiple quicktime events?
 					quickTime = true;
+					quickRenderValue = STD_QUIK_TEXTURE;
+
+					//show image of event firing
+					initiatedQuickTime = SDL_GetTicks();
 					//the view will also be updated to show a key on the screen
 				}
 				//renders the image and returns the frame number rendered
 				frame = view->render(frame);
+				view->renderQuicktime(quickRenderValue);
+				view->updateRender();
 			}
 		}
 	}

@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string>
 #include <Ltexture.h>
+//#include <Controller.h>
 
 class View
 {
@@ -21,5 +22,9 @@ public:
 	//Loads media
 	bool loadMedia();
 
+	//renders quicktime events to renderer
+	bool renderQuicktime(int quikTexture);
 	
+	//wrapper method to update grender
+	bool updateRender();
 };

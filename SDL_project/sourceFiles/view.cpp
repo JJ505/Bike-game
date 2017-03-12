@@ -26,6 +26,12 @@ LTexture gBikeTexture;
 LTexture gRoadTexture;
 LTexture gFarBackgroundTexture;
 
+//textures for quicktime events
+LTexture gGoodQuikTexture;
+LTexture gBadQuikTexture;
+LTexture gUntimelyQuikTexture;
+LTexture gStdQuikTexture;
+
 View::View() {
 
 }
@@ -123,6 +129,29 @@ bool View::loadMedia()
 		success = false;
 	}
 
+
+	//loads quicktime textures
+	if (!gBadQuikTexture.loadFromFile("resources/badquiktime.png", gRenderer))
+	{
+		printf("Failed to load badquiktime texture image!\n");
+		success = false;
+	}
+	if (!gGoodQuikTexture.loadFromFile("resources/goodquiktime.png", gRenderer))
+	{
+		printf("Failed to load goodquiktime texture image!\n");
+		success = false;
+	}
+	if (!gStdQuikTexture.loadFromFile("resources/stdquiktime.png", gRenderer))
+	{
+		printf("Failed to load stdquiktime texture image!\n");
+		success = false;
+	}
+	if (!gUntimelyQuikTexture.loadFromFile("resources/untimelyquiktime.png", gRenderer))
+	{
+		printf("Failed to load untimelyquiktime texture image!\n");
+		success = false;
+	}
+
 	return success;
 }
 
@@ -162,11 +191,11 @@ int View::render(int frame)
 	//Render Bike' to the screen
 	gBikeTexture.render(240, 190, NULL, gRenderer);
 
+
 	//Update screen
-	SDL_RenderPresent(gRenderer);
+	//SDL_RenderPresent(gRenderer);
 
 	++frame;
-	//printf("frame is %d\n frame / 30 is %d", frame, frame/30);
 	if (frame / 30 >= ROAD_FRAMES)
 	{
 		frame = 0;
@@ -178,77 +207,36 @@ int View::render(int frame)
 	return frame;
 
 }
-/**
-int main( int argc, char* args[] )
+
+bool View::updateRender()
 {
-	//Start up SDL and create window
-	if( !init() )
-	{
-		printf( "Failed to initialize!\n" );
+	SDL_RenderPresent(gRenderer);
+	return true;
+}
+
+const int STD_QUIK_TEXTURE = 0;
+const int GOOD_QUIK_TEXTURE = 1;
+const int BAD_QUIK_TEXTURE = 2;
+const int UNTIMELY_QUIK_TEXTURE = 3;
+//render the quicktime buttons
+bool View::renderQuicktime(int quikTexture)
+{
+	if (quikTexture == STD_QUIK_TEXTURE) {
+		gStdQuikTexture.render(250, 200, NULL, gRenderer);
+	}
+	else if (quikTexture == GOOD_QUIK_TEXTURE) {
+		gGoodQuikTexture.render(250, 200, NULL, gRenderer);
+	}
+	else if (quikTexture == BAD_QUIK_TEXTURE) {
+		gBadQuikTexture.render(250, 200, NULL, gRenderer);
+	}
+	else if (quikTexture == UNTIMELY_QUIK_TEXTURE) {
+		gUntimelyQuikTexture.render(250, 200, NULL, gRenderer);
 	}
 	else
 	{
-		//Load media
-		if( !loadMedia() )
-		{
-			printf( "Failed to load media!\n" );
-		}
-		else
-		{	
-			//Main loop flag
-			bool quit = false;
-
-			//Event handler
-			SDL_Event e;
-
-			//current animation frame
-			int frame = 0;
-
-			//While application is running
-			while( !quit )
-			{
-				//Handle events on queue
-				while( SDL_PollEvent( &e ) != 0 )
-				{
-					//User requests quit
-					if( e.type == SDL_QUIT )
-					{
-						quit = true;
-					}
-					
-				}
-
-				//Clear screen
-				SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
-				SDL_RenderClear( gRenderer );
-
-				//Render far background to screen
-				gFarBackgroundTexture.render(0, 0, NULL, gRenderer);
-
-				//Render background texture to screen
-				//slows down animation of road by rendering one of the two frames each 30 frames
-				SDL_Rect* currentClip = &gSpriteClips[frame / 30];
-				gRoadTexture.render((SCREEN_WIDTH - currentClip->w) / 2, (SCREEN_HEIGHT - currentClip->h) / 2, currentClip, gRenderer);
-
-				//Render Bike' to the screen
-				gBikeTexture.render( 240, 190 , NULL, gRenderer);
-
-				//Update screen
-				SDL_RenderPresent( gRenderer );
-
-				++frame;
-				//printf("frame is %d\n frame / 30 is %d", frame, frame/30);
-				if (frame / 30 >= ROAD_FRAMES)
-				{
-					frame = 0;
-				}
-			}
-		}
+		return false;
 	}
-
-	//Free resources and close SDL
-	close();
-
-	return 0;
+	//SDL_RenderPresent(gRenderer);
+	return true;
 }
-**/

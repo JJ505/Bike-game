@@ -12,6 +12,9 @@ GameModel::GameModel()
 }
 
 bool GameModel::spawnEnemies() {
+	//spawn if its been longer than 5 seconds since last event
+	//also possible random chance to spawn
+	//event is something is drawn on screen, if not pressed in time then damage player
 	if (SDL_GetTicks() - timeSinceLastSpawn > 5000) {
 		printf("time since last spawned %d\n", timeSinceLastSpawn);
 		timeSinceLastSpawn = SDL_GetTicks();
@@ -31,13 +34,13 @@ bool GameModel::spawnEnemies() {
 bool GameModel::fireQuickTime(Uint32 pressedTime)
 {
 	//if approximately pressed within one second
-	if (pressedTime - timeSinceLastSpawn > 0 && pressedTime - timeSinceLastSpawn < 1000) 
+	if (pressedTime - timeSinceLastSpawn > 0 && pressedTime - timeSinceLastSpawn < 700) 
 	{
 		//update player experience or something positive
 		printf("great job pressed correctly\n");
 		return true;
 	}
-	printf("way too late bro\n");
+	printf("a little too late\n");
 	//else negatively impact player
 	return false;
 }
