@@ -1,4 +1,10 @@
-﻿  View.cpp
+﻿  Main.cpp
+  Controller.cpp
+  Generating Code...
+  Compiling...
+  View.cpp
+  Player.cpp
+  Ltexture.cpp
   GameModel.cpp
   Generating Code...
   SDL_project.vcxproj -> C:\Users\jjohn\documents\visual studio 2015\Projects\SDL_project\Debug\SDL_project.exe

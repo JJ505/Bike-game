@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string>
 #include <Ltexture.h>
+
 //#include <Controller.h>
 
 class View
@@ -27,4 +28,12 @@ public:
 	
 	//wrapper method to update grender
 	bool updateRender();
+
+	bool updateEntityPosition(int x, int y, int entity);
+};
+
+enum Entity
+{
+	player = 1,
+	badguy = 2
 };

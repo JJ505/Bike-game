@@ -1,3 +1,4 @@
+#pragma once
 //Using SDL, SDL_image, standard IO, and strings
 #include <SDL.h>
 #include <SDL_image.h>

@@ -20,6 +20,7 @@ void Controller::startGame() {
 	}
 	else
 	{
+
 		//Load media
 		if (!view->loadMedia())
 		{
@@ -83,8 +84,14 @@ void Controller::startGame() {
 					initiatedQuickTime = SDL_GetTicks();
 					//the view will also be updated to show a key on the screen
 				}
+				//need to get gamemode player and enemy entities
+
+				Player* player = gameModel->getPlayer();
 				//renders the image and returns the frame number rendered
 				frame = view->render(frame);
+				view->updateEntityPosition(player->getX(), player->getY(), 1);
+				//TODO here have for loop that renders each enemy
+				//each enemy will be in the game model held in an array of enemy pointers
 				view->renderQuicktime(quickRenderValue);
 				view->updateRender();
 			}

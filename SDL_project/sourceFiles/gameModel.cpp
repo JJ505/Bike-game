@@ -4,17 +4,23 @@
 
 int spawnedEnemies;
 Uint32 timeSinceLastSpawn = 0;
+//Player* player;
 GameModel::GameModel()
 {
 	spawnedEnemies = 0;
 	//eventually show quicktime events and have them rotate
-
+	player = new Player(240, 190);
 }
 
+Player* GameModel::getPlayer()
+{
+	return player;
+}
 bool GameModel::spawnEnemies() {
 	//spawn if its been longer than 5 seconds since last event
 	//also possible random chance to spawn
 	//event is something is drawn on screen, if not pressed in time then damage player
+
 	if (SDL_GetTicks() - timeSinceLastSpawn > 5000) {
 		printf("time since last spawned %d\n", timeSinceLastSpawn);
 		timeSinceLastSpawn = SDL_GetTicks();

@@ -11,6 +11,8 @@
 	could add score 
 	add multiple enemies(probably at most two)
 	add randomized enemies 
+	//quiktime will most likely be a int instead of bool
+	//quiktime will also have to be attached to enemy and random keys
 **/
 
 int main(int argc, char* args[])

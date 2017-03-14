@@ -25,6 +25,7 @@ SDL_Rect gSpriteClips[ROAD_FRAMES];
 LTexture gBikeTexture;
 LTexture gRoadTexture;
 LTexture gFarBackgroundTexture;
+LTexture gBadGuyTexture;
 
 //textures for quicktime events
 LTexture gGoodQuikTexture;
@@ -99,6 +100,13 @@ bool View::loadMedia()
 	if( !gBikeTexture.loadFromFile( "resources/bike.png" , gRenderer) )
 	{
 		printf( "Failed to load Bike' texture image!\n" );
+		success = false;
+	}
+
+	//load bad guy texture
+	if (!gBadGuyTexture.loadFromFile("resources/badguy.png", gRenderer))
+	{
+		printf("Failed to load badguy image");
 		success = false;
 	}
 	
@@ -189,9 +197,9 @@ int View::render(int frame)
 	gRoadTexture.render((SCREEN_WIDTH - currentClip->w) / 2, (SCREEN_HEIGHT - currentClip->h) / 2, currentClip, gRenderer);
 
 	//Render Bike' to the screen
-	gBikeTexture.render(240, 190, NULL, gRenderer);
+	//gBikeTexture.render(240, 190, NULL, gRenderer);
 
-
+	//gBadGuyTexture.render(140, 230, NULL, gRenderer);
 	//Update screen
 	//SDL_RenderPresent(gRenderer);
 
@@ -208,12 +216,32 @@ int View::render(int frame)
 
 }
 
+//need function to update given character to their position
+bool View::updateEntityPosition(int x, int y, int entity)
+{
+	if (entity = player)
+	{
+		gBikeTexture.render(240, 190, NULL, gRenderer);
+	}
+	else if (entity = badguy)
+	{
+		gBadGuyTexture.render(140, 230, NULL, gRenderer);
+	}
+	else
+	{
+		return false;
+	}
+	return true;
+
+}
+
 bool View::updateRender()
 {
 	SDL_RenderPresent(gRenderer);
 	return true;
 }
 
+//later will have to better call these constants
 const int STD_QUIK_TEXTURE = 0;
 const int GOOD_QUIK_TEXTURE = 1;
 const int BAD_QUIK_TEXTURE = 2;
