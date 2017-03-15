@@ -1,14 +1,13 @@
 #pragma once
-class Player 
+class Enemy
 {
 private:
 	int x;
 	int y;
-	int health;
 public:
 
-	Player::Player(int x, int y);
-	
+	Enemy::Enemy(int x, int y);
+
 	int getX();
 
 	int getY();

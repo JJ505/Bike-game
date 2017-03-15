@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="sourceFiles\Controller.cpp" />
+    <ClCompile Include="sourceFiles\Enemy.cpp" />
     <ClCompile Include="sourceFiles\GameModel.cpp" />
     <ClCompile Include="sourceFiles\Ltexture.cpp" />
     <ClCompile Include="sourceFiles\Main.cpp" />
@@ -28,6 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headerFiles\Controller.h" />
+    <ClInclude Include="headerFiles\Enemy.h" />
     <ClInclude Include="headerFiles\GameModel.h" />
     <ClInclude Include="headerFiles\Ltexture.h" />
     <ClInclude Include="headerFiles\Player.h" />

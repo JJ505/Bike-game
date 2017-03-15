@@ -5,7 +5,11 @@
 #include <string>
 #include <Ltexture.h>
 
-//#include <Controller.h>
+enum Entity
+{
+	PLAYER = 1,
+	ENEMY = 2
+};
 
 class View
 {
@@ -32,8 +36,3 @@ public:
 	bool updateEntityPosition(int x, int y, int entity);
 };
 
-enum Entity
-{
-	player = 1,
-	badguy = 2
-};

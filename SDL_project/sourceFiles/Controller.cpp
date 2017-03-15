@@ -74,7 +74,7 @@ void Controller::startGame() {
 				}
 
 				//notifies gameModel to possible spawnEnemies
-				if (gameModel->spawnEnemies())
+				if (gameModel->spawnQuickTime())
 				{
 					//there may be multiple quicktime events?
 					quickTime = true;
@@ -87,11 +87,11 @@ void Controller::startGame() {
 				//need to get gamemode player and enemy entities
 
 				Player* player = gameModel->getPlayer();
+				Enemy* enemy = gameModel->getEnemy();
 				//renders the image and returns the frame number rendered
 				frame = view->render(frame);
-				view->updateEntityPosition(player->getX(), player->getY(), 1);
-				//TODO here have for loop that renders each enemy
-				//each enemy will be in the game model held in an array of enemy pointers
+				view->updateEntityPosition(player->getX(), player->getY(), PLAYER_ENTITY);
+				view->updateEntityPosition(enemy->getX(), enemy->getY(), ENEMY_ENTITY);
 				view->renderQuicktime(quickRenderValue);
 				view->updateRender();
 			}

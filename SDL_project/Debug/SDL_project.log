@@ -1,11 +1,8 @@
-﻿  Main.cpp
-  Controller.cpp
+﻿  View.cpp
   Generating Code...
   Compiling...
-  View.cpp
-  Player.cpp
-  Ltexture.cpp
-  GameModel.cpp
+  Main.cpp
+  Controller.cpp
   Generating Code...
   SDL_project.vcxproj -> C:\Users\jjohn\documents\visual studio 2015\Projects\SDL_project\Debug\SDL_project.exe
   SDL_project.vcxproj -> C:\Users\jjohn\documents\visual studio 2015\Projects\SDL_project\Debug\SDL_project.pdb (Partial PDB)

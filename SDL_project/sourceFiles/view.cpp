@@ -219,12 +219,14 @@ int View::render(int frame)
 //need function to update given character to their position
 bool View::updateEntityPosition(int x, int y, int entity)
 {
-	if (entity = player)
+	if (entity == PLAYER)
 	{
+		printf("rendering player\n");
 		gBikeTexture.render(240, 190, NULL, gRenderer);
 	}
-	else if (entity = badguy)
+	else if (entity == ENEMY)
 	{
+		printf("rendering bad guy\n");
 		gBadGuyTexture.render(140, 230, NULL, gRenderer);
 	}
 	else
