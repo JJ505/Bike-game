@@ -1,11 +1,5 @@
-/*This source code copyrighted by Lazy Foo' Productions (2004-2015)
-and may not be redistributed without written permission.*/
-
-//Using SDL, SDL_image, standard IO, and strings
 #include <View.h>
 
-//add header files of other class objects made and include in here
-//practice first with taking out ltexture class
 //Screen dimension constants
 const int SCREEN_WIDTH = 1100;
 const int SCREEN_HEIGHT = 700;
@@ -196,24 +190,13 @@ int View::render(int frame)
 	SDL_Rect* currentClip = &gSpriteClips[frame / 30];
 	gRoadTexture.render((SCREEN_WIDTH - currentClip->w) / 2, (SCREEN_HEIGHT - currentClip->h) / 2, currentClip, gRenderer);
 
-	//Render Bike' to the screen
-	//gBikeTexture.render(240, 190, NULL, gRenderer);
-
-	//gBadGuyTexture.render(140, 230, NULL, gRenderer);
-	//Update screen
-	//SDL_RenderPresent(gRenderer);
-
 	++frame;
 	if (frame / 30 >= ROAD_FRAMES)
 	{
 		frame = 0;
 	}
 
-	//Free resources and close SDL
-	//close();
-
 	return frame;
-
 }
 
 //need function to update given character to their position
@@ -221,12 +204,10 @@ bool View::updateEntityPosition(int x, int y, int entity)
 {
 	if (entity == PLAYER)
 	{
-		printf("rendering player\n");
 		gBikeTexture.render(x, y, NULL, gRenderer);
 	}
 	else if (entity == ENEMY)
 	{
-		printf("rendering bad guy\n");
 		gBadGuyTexture.render(x, y, NULL, gRenderer);
 	}
 	else
@@ -243,25 +224,25 @@ bool View::updateRender()
 	return true;
 }
 
-//later will have to better call these constants
+//TODO later will have to better call these constants
 const int STD_QUIK_TEXTURE = 0;
 const int GOOD_QUIK_TEXTURE = 1;
 const int BAD_QUIK_TEXTURE = 2;
 const int UNTIMELY_QUIK_TEXTURE = 3;
 //render the quicktime buttons
-bool View::renderQuicktime(int quikTexture)
+bool View::renderQuicktime(int quikTexture, int x, int y)
 {
 	if (quikTexture == STD_QUIK_TEXTURE) {
-		gStdQuikTexture.render(250, 200, NULL, gRenderer);
+		gStdQuikTexture.render(x, y, NULL, gRenderer);
 	}
 	else if (quikTexture == GOOD_QUIK_TEXTURE) {
-		gGoodQuikTexture.render(250, 200, NULL, gRenderer);
+		gGoodQuikTexture.render(x, y, NULL, gRenderer);
 	}
 	else if (quikTexture == BAD_QUIK_TEXTURE) {
-		gBadQuikTexture.render(250, 200, NULL, gRenderer);
+		gBadQuikTexture.render(x, y, NULL, gRenderer);
 	}
 	else if (quikTexture == UNTIMELY_QUIK_TEXTURE) {
-		gUntimelyQuikTexture.render(250, 200, NULL, gRenderer);
+		gUntimelyQuikTexture.render(x, y, NULL, gRenderer);
 	}
 	else
 	{

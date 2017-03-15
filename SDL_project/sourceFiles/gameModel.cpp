@@ -43,7 +43,7 @@ bool GameModel::spawnQuickTime() {
 bool GameModel::fireQuickTime(Uint32 pressedTime)
 {
 	//if approximately pressed within one second
-	if (pressedTime - timeSinceLastSpawn > 0 && pressedTime - timeSinceLastSpawn < 700) 
+	if (pressedTime - timeSinceLastSpawn > 0 && pressedTime - timeSinceLastSpawn < 500) 
 	{
 		//update player experience or something positive
 		printf("great job pressed correctly\n");

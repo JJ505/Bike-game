@@ -12,5 +12,7 @@ public:
 	int getX();
 
 	int getY();
+
+	int damagePlayerHealth(int reduction);
 	//have key press events for when enemy comes near player?
 };

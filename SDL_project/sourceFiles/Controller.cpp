@@ -31,6 +31,8 @@ void Controller::startGame() {
 			//Main loop flag
 			bool quit = false;
 			bool quickTime = false;
+			bool pressedQuickTime = false;
+			bool badQuickTime = false;
 			//Event handler
 			SDL_Event e;
 
@@ -40,6 +42,8 @@ void Controller::startGame() {
 			//While application is running
 			while (!quit)
 			{
+				Player* player = gameModel->getPlayer();
+				Enemy* enemy = gameModel->getEnemy();
 				//Handle events on queue
 				while (SDL_PollEvent(&e) != 0)
 				{
@@ -50,12 +54,12 @@ void Controller::startGame() {
 					}
 					if (quickTime && e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_q)
 					{
-						quickTime = false;
+						pressedQuickTime = true;
 						//signal gameModel when quiktime buttone clicked with timing
 						//gamemodel will update the player in negative or positive manner
 						if (gameModel->fireQuickTime(SDL_GetTicks())) {
-							quickRenderValue = GOOD_QUIK_TEXTURE;
-							
+							quickRenderValue = GOOD_QUIK_TEXTURE;		
+
 						}
 						else
 						{
@@ -63,14 +67,21 @@ void Controller::startGame() {
 						}
 					}
 				}
-				if (SDL_GetTicks() - initiatedQuickTime > 1700) {
+				//no reaction
+				if (quickTime && SDL_GetTicks() - initiatedQuickTime > 1700)
+				{
+					pressedQuickTime = false;
 					quickTime = false;
+					badQuickTime = false;
 					quickRenderValue = NO_QUIK_TEXTURE;
-					//show screen flash red?
 				}
-				else if (quickTime && SDL_GetTicks() - initiatedQuickTime > 1200) {
+				//too late reaction
+				else if (!badQuickTime && !pressedQuickTime && quickTime && SDL_GetTicks() - initiatedQuickTime > 1200)
+				{
+					badQuickTime = true;
 					printf("decidedly Too late\n");
 					quickRenderValue = BAD_QUIK_TEXTURE;
+					player->damagePlayerHealth(10);
 				}
 
 				//notifies gameModel to possible spawnEnemies
@@ -82,17 +93,13 @@ void Controller::startGame() {
 
 					//show image of event firing
 					initiatedQuickTime = SDL_GetTicks();
-					//the view will also be updated to show a key on the screen
 				}
-				//need to get gamemode player and enemy entities
-
-				Player* player = gameModel->getPlayer();
-				Enemy* enemy = gameModel->getEnemy();
 				//renders the image and returns the frame number rendered
 				frame = view->render(frame);
+				//renders the updated positions of player and enemy
 				view->updateEntityPosition(player->getX(), player->getY(), PLAYER_ENTITY);
 				view->updateEntityPosition(enemy->getX(), enemy->getY(), ENEMY_ENTITY);
-				view->renderQuicktime(quickRenderValue);
+				view->renderQuicktime(quickRenderValue, enemy->getX()+50, enemy->getY()+30);
 				view->updateRender();
 			}
 		}
