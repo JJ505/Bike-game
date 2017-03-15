@@ -222,12 +222,12 @@ bool View::updateEntityPosition(int x, int y, int entity)
 	if (entity == PLAYER)
 	{
 		printf("rendering player\n");
-		gBikeTexture.render(240, 190, NULL, gRenderer);
+		gBikeTexture.render(x, y, NULL, gRenderer);
 	}
 	else if (entity == ENEMY)
 	{
 		printf("rendering bad guy\n");
-		gBadGuyTexture.render(140, 230, NULL, gRenderer);
+		gBadGuyTexture.render(x, y, NULL, gRenderer);
 	}
 	else
 	{
