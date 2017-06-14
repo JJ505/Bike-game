@@ -8,11 +8,10 @@ private:
 public:
 
 	Player::Player(int x, int y);
-	
 	int getX();
-
 	int getY();
-
 	int damagePlayerHealth(int reduction);
+	int getHealth();
+	void movePlayerForward(int movementSpeed);
 	//have key press events for when enemy comes near player?
 };

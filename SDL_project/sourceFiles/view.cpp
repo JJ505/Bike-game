@@ -1,5 +1,9 @@
 #include <View.h>
-
+#include <SDL.h>
+#include <SDL_image.h>
+#include <stdio.h>
+#include <string>
+#include <Ltexture.h>
 //Screen dimension constants
 const int SCREEN_WIDTH = 1100;
 const int SCREEN_HEIGHT = 700;
@@ -27,8 +31,17 @@ LTexture gBadQuikTexture;
 LTexture gUntimelyQuikTexture;
 LTexture gStdQuikTexture;
 
+//letters for quicktime events
+LTexture gLetterQ;
+LTexture gLetterE;
+
 View::View() {
 
+}
+
+int View::getScreenWidth()
+{
+	return SCREEN_WIDTH;
 }
 
 bool View::init()
@@ -81,7 +94,6 @@ bool View::init()
 			}
 		}
 	}
-
 	return success;
 }
 
@@ -93,14 +105,14 @@ bool View::loadMedia()
 	//Load Bike' texture
 	if( !gBikeTexture.loadFromFile( "resources/bike.png" , gRenderer) )
 	{
-		printf( "Failed to load Bike' texture image!\n" );
+		printf( "Failed to load player texture image!\n" );
 		success = false;
 	}
 
 	//load bad guy texture
 	if (!gBadGuyTexture.loadFromFile("resources/badguy.png", gRenderer))
 	{
-		printf("Failed to load badguy image");
+		printf("Failed to load enemy image");
 		success = false;
 	}
 	
@@ -133,24 +145,34 @@ bool View::loadMedia()
 
 
 	//loads quicktime textures
-	if (!gBadQuikTexture.loadFromFile("resources/badquiktime.png", gRenderer))
+	if (!gBadQuikTexture.loadFromFile("resources/badBackgroundQuickTime.png", gRenderer))
 	{
 		printf("Failed to load badquiktime texture image!\n");
 		success = false;
 	}
-	if (!gGoodQuikTexture.loadFromFile("resources/goodquiktime.png", gRenderer))
+	if (!gGoodQuikTexture.loadFromFile("resources/goodBackgroundQuickTime.png", gRenderer))
 	{
 		printf("Failed to load goodquiktime texture image!\n");
 		success = false;
 	}
-	if (!gStdQuikTexture.loadFromFile("resources/stdquiktime.png", gRenderer))
+	if (!gStdQuikTexture.loadFromFile("resources/backgroundQuickTime.png", gRenderer))
 	{
 		printf("Failed to load stdquiktime texture image!\n");
 		success = false;
 	}
-	if (!gUntimelyQuikTexture.loadFromFile("resources/untimelyquiktime.png", gRenderer))
+	if (!gUntimelyQuikTexture.loadFromFile("resources/untimelyBackgroundQuickTime.png", gRenderer))
 	{
 		printf("Failed to load untimelyquiktime texture image!\n");
+		success = false;
+	}
+	if (!gLetterQ.loadFromFile("resources/Q_BUTTON.png", gRenderer))
+	{
+		printf("Failed to load qbutton texture image!\n");
+		success = false;
+	}
+	if (!gLetterE.loadFromFile("resources/E_BUTTON.png", gRenderer))
+	{
+		printf("Failed to load ebutton texture image!\n");
 		success = false;
 	}
 
@@ -229,6 +251,7 @@ const int STD_QUIK_TEXTURE = 0;
 const int GOOD_QUIK_TEXTURE = 1;
 const int BAD_QUIK_TEXTURE = 2;
 const int UNTIMELY_QUIK_TEXTURE = 3;
+
 //render the quicktime buttons
 bool View::renderQuicktime(int quikTexture, int x, int y)
 {
@@ -249,5 +272,23 @@ bool View::renderQuicktime(int quikTexture, int x, int y)
 		return false;
 	}
 	//SDL_RenderPresent(gRenderer);
+	return true;
+}
+
+//sontants for letters
+const int Q_LETTER = 0;
+const int E_LETTER = 1;
+bool View::renderQuickTimeLetter(int quickLetter, int x, int y)
+{
+	if (quickLetter == Q_LETTER) {
+		gLetterQ.render(x, y, NULL, gRenderer);
+	}
+	else if (quickLetter == E_LETTER) {
+		gLetterE.render(x, y, NULL, gRenderer);
+	}
+	else
+	{
+		return false;
+	}
 	return true;
 }

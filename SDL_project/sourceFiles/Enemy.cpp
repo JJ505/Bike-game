@@ -14,3 +14,6 @@ int Enemy::getY() {
 	return y;
 }
 
+void Enemy::moveEnemyForward(int movementSpeed) {
+	this->x += movementSpeed;
+}

@@ -17,9 +17,19 @@ int Player::getY() {
 	return y;
 }
 
+void Player::movePlayerForward(int movementSpeed) {
+	this->x += movementSpeed;
+
+}
+
 int Player::damagePlayerHealth(int reduction)
 {
 	this->health -= reduction;
 	printf("reduced health to %d\n", this->health);
 	return 1;
+}
+
+int Player::getHealth()
+{
+	return this->health;
 }

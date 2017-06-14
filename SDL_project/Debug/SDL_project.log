@@ -1,3 +1,4 @@
 ﻿  Controller.cpp
+c:\users\jjohn\documents\visual studio 2015\projects\sdl_project\sdl_project\sourcefiles\controller.cpp(99): warning C4018: '>': signed/unsigned mismatch
   SDL_project.vcxproj -> C:\Users\jjohn\documents\visual studio 2015\Projects\SDL_project\Debug\SDL_project.exe
   SDL_project.vcxproj -> C:\Users\jjohn\documents\visual studio 2015\Projects\SDL_project\Debug\SDL_project.pdb (Partial PDB)

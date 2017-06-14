@@ -1,7 +1,8 @@
 //all the game logic and model of the game here
 //lets have quick time events!
 #include <GameModel.h>
-
+#include <SDL_image.h>
+#include <string>
 int spawnedEnemies;
 Uint32 timeSinceLastSpawn = 0;
 //Player* player;
@@ -10,7 +11,7 @@ GameModel::GameModel()
 	spawnedEnemies = 0;
 	//eventually show quicktime events and have them rotate
 	player = new Player(240, 190);
-	enemy = new Enemy(140, 250);
+	enemy = new Enemy(140, 330);
 }
 
 Player* GameModel::getPlayer()

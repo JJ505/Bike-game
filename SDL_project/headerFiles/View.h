@@ -1,9 +1,5 @@
 #pragma once
-#include <SDL.h>
-#include <SDL_image.h>
-#include <stdio.h>
-#include <string>
-#include <Ltexture.h>
+
 
 
 enum Entity
@@ -16,6 +12,8 @@ class View
 {
 public: 
 	View();
+
+	int getScreenWidth();
 
 	int render(int frame);
 
@@ -34,6 +32,10 @@ public:
 	//wrapper method to update grender
 	bool updateRender();
 
+	//render the entity at position
 	bool updateEntityPosition(int x, int y, int entity);
+
+	//render the quicktime letter
+	bool renderQuickTimeLetter(int quickLetter, int x, int y);
 };
 

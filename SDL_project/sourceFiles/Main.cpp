@@ -5,14 +5,26 @@
 
 //TODO
 /**
-	draw enemy or some event to show up on screen
-	have player health diminshed for bad response time to quiktime
-	animate events for varying quiktime levels
-	could add score 
-	add multiple enemies(probably at most two)
-	add randomized enemies 
-	//quiktime will most likely be a int instead of bool
-	//quiktime will also have to be attached to enemy and random keys
+	
+	add win condition/animation
+
+	have effects or some animation to keep track of bonuses
+	have a bonus streak
+	have more than just the "q" quicktime button
+	add obstacles that will be jumped over or destroyed
+
+	animation
+	eventually have player be a little animated
+	add some lighting effects?
+	make road look nicer
+
+	possible additions
+	===========================
+	add a minimap that shows the characters and progress on map?
+	make map big with multiple portions and backgrounds
+	show a calculation of the projected outcome of the match with probability?
+	make the enemy gain a base + catchup distance
+	
 **/
 
 int main(int argc, char* args[])
