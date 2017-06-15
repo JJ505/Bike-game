@@ -39,6 +39,10 @@ void Controller::startGame() {
 			int quickTimeReaction = 0;
 			int quicktimeButton = -1;
 			bool pressedCorrectButton = false;
+			bool gamePaused = false;
+
+			//time values
+			Uint32 pausedTime = 0;
 			//Event handler
 			SDL_Event e;
 
@@ -58,6 +62,36 @@ void Controller::startGame() {
 					{
 						quit = true;
 					}
+					if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE)
+					{
+						//paused game
+						gamePaused = true;
+						Uint32 pausedStartTime = SDL_GetTicks();
+
+						SDL_Event p;
+						while (gamePaused)
+						{
+							while (SDL_PollEvent(&p) != 0)
+							{
+								if (p.type == SDL_QUIT)
+								{
+									quit = true;
+									gamePaused = false;
+								}
+								if (p.type == SDL_KEYDOWN && p.key.keysym.sym == SDLK_ESCAPE)
+								{
+									//unpause game
+									gamePaused = false;
+									pausedTime = SDL_GetTicks() - pausedStartTime;
+
+								}
+							}
+							//draw paused letters in the middle of the screen
+							view->renderPauseScreen();
+							view->updateRender();
+						}
+					}
+
 					//only set the bools of what occurs. after some amount of time award the distances
 					if (quickTime && e.type == SDL_KEYDOWN)
 					{
@@ -96,7 +130,7 @@ void Controller::startGame() {
 				if (quickTime)
 				{
 					//if the quicktime has finished
-					if (SDL_GetTicks() - initiatedQuickTime > timeLimit)
+					if (SDL_GetTicks() - initiatedQuickTime - pausedTime > timeLimit)
 					{
 						quickTime = false;
 						badQuickTime = false;
@@ -119,7 +153,7 @@ void Controller::startGame() {
 						quicktimeButton = -1;
 					}
 					//or if the time has not finished then a bad quicktime needs to be recorded
-					else if (SDL_GetTicks() - initiatedQuickTime > 1200)
+					else if (SDL_GetTicks() - initiatedQuickTime - pausedTime > 1200)
 					{
 						if (!quickTimeReaction)
 						{
@@ -136,7 +170,7 @@ void Controller::startGame() {
 				{
 					//set quicktime event to be true(happening)
 					quickTime = true;
-
+					pausedTime = 0;
 					//get random quicktime event
 					quicktimeButton = rand() % QUICK_BUTTON_TEXTURES;
 					quickRenderValue = STD_QUIK_TEXTURE;

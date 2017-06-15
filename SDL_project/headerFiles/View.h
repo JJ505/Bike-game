@@ -14,6 +14,7 @@ public:
 	View();
 
 	int getScreenWidth();
+	int getScreenHeight();
 
 	int render(int frame);
 
@@ -37,5 +38,8 @@ public:
 
 	//render the quicktime letter
 	bool renderQuickTimeLetter(int quickLetter, int x, int y);
+
+	//render pause screen
+	bool renderPauseScreen();
 };
 

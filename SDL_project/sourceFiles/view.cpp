@@ -24,6 +24,7 @@ LTexture gBikeTexture;
 LTexture gRoadTexture;
 LTexture gFarBackgroundTexture;
 LTexture gBadGuyTexture;
+LTexture gPausedTexture;
 
 //textures for quicktime events
 LTexture gGoodQuikTexture;
@@ -43,6 +44,12 @@ int View::getScreenWidth()
 {
 	return SCREEN_WIDTH;
 }
+
+int View::getScreenHeight()
+{
+	return SCREEN_HEIGHT;
+}
+
 
 bool View::init()
 {
@@ -113,6 +120,12 @@ bool View::loadMedia()
 	if (!gBadGuyTexture.loadFromFile("resources/badguy.png", gRenderer))
 	{
 		printf("Failed to load enemy image");
+		success = false;
+	}
+	//load paused texture
+	if (!gPausedTexture.loadFromFile("resources/paused.png", gRenderer))
+	{
+		printf("Failed to load paused image");
 		success = false;
 	}
 	
@@ -275,7 +288,7 @@ bool View::renderQuicktime(int quikTexture, int x, int y)
 	return true;
 }
 
-//sontants for letters
+//contants for letters
 const int Q_LETTER = 0;
 const int E_LETTER = 1;
 bool View::renderQuickTimeLetter(int quickLetter, int x, int y)
@@ -290,5 +303,12 @@ bool View::renderQuickTimeLetter(int quickLetter, int x, int y)
 	{
 		return false;
 	}
+	return true;
+}
+
+bool View::renderPauseScreen()
+{
+	gPausedTexture.render(50, 50, NULL, gRenderer);
+
 	return true;
 }
