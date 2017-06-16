@@ -20,19 +20,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="sourceFiles\Controller.cpp" />
-    <ClCompile Include="sourceFiles\Enemy.cpp" />
+    <ClCompile Include="sourceFiles\Entity.cpp" />
     <ClCompile Include="sourceFiles\GameModel.cpp" />
     <ClCompile Include="sourceFiles\Ltexture.cpp" />
     <ClCompile Include="sourceFiles\Main.cpp" />
-    <ClCompile Include="sourceFiles\Player.cpp" />
     <ClCompile Include="sourceFiles\View.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headerFiles\Controller.h" />
-    <ClInclude Include="headerFiles\Enemy.h" />
+    <ClInclude Include="headerFiles\Entity.h" />
     <ClInclude Include="headerFiles\GameModel.h" />
     <ClInclude Include="headerFiles\Ltexture.h" />
-    <ClInclude Include="headerFiles\Player.h" />
     <ClInclude Include="headerFiles\View.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -1,15 +1,14 @@
 #pragma once
 
-#include <Player.h>
-#include <Enemy.h>
+#include <Entity.h>
 #include <SDL.h>
 
 #ifndef GAMEMODEL_H
 #define GAMEMODEL_H
 class GameModel {
 private:
-	Player* player;
-	Enemy* enemy;
+	Entity* player;
+	Entity* enemy;
 	bool victory;
 
 public:
@@ -19,8 +18,8 @@ public:
 	bool fireQuickTime(Uint32 pressedTime);
 	
 	//getters for player and enemy
-	Player* getPlayer();
-	Enemy* getEnemy();
+	Entity* getPlayer();
+	Entity* getEnemy();
 
 	//reset player and enemy to original positions
 	bool resetPlayerAndEnemy();

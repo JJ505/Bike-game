@@ -27,13 +27,10 @@
     <ClCompile Include="sourceFiles\Ltexture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sourceFiles\Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="sourceFiles\View.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sourceFiles\Enemy.cpp">
+    <ClCompile Include="sourceFiles\Entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,16 +41,13 @@
     <ClInclude Include="headerFiles\Ltexture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headerFiles\Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="headerFiles\View.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="headerFiles\GameModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headerFiles\Enemy.h">
+    <ClInclude Include="headerFiles\Entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

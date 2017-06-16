@@ -55,8 +55,8 @@ void Controller::startGame() {
 			//While application is running
 			while (!quit)
 			{
-				Player* player = gameModel->getPlayer();
-				Enemy* enemy = gameModel->getEnemy();
+				Entity* player = gameModel->getPlayer();
+				Entity* enemy = gameModel->getEnemy();
 				//Handle events on queue
 				while (SDL_PollEvent(&e) != 0)
 				{
@@ -141,13 +141,13 @@ void Controller::startGame() {
 						quickRenderValue = NO_QUIK_TEXTURE;
 						switch (quickTimeReaction) {
 						case 1:
-							player->movePlayerForward(50);
+							player->moveEntityForward(50);
 							break;
 						case 2:
-							enemy->moveEnemyForward(60);
+							enemy->moveEntityForward(60);
 							break;
 						case 3:
-							enemy->moveEnemyForward(75);
+							enemy->moveEntityForward(75);
 							break;
 						default:
 							break;

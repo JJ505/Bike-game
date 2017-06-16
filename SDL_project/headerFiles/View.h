@@ -2,7 +2,7 @@
 
 #ifndef VIEW_H
 #define VIEW_H
-enum Entity
+enum member
 {
 	PLAYER = 1,
 	ENEMY = 2

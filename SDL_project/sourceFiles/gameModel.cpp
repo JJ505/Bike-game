@@ -11,17 +11,17 @@ GameModel::GameModel()
 {
 	spawnedEnemies = 0;
 	//eventually show quicktime events and have them rotate
-	player = new Player(240, 190);
-	enemy = new Enemy(140, 330);
+	player = new Entity(240, 190);
+	enemy = new Entity(140, 330);
 	victory = false;
 }
 
-Player* GameModel::getPlayer()
+Entity* GameModel::getPlayer()
 {
 	return player;
 }
 
-Enemy* GameModel::getEnemy()
+Entity* GameModel::getEnemy()
 {
 	return enemy;
 }

@@ -246,13 +246,13 @@ int View::render(int frame)
 }
 
 //need function to update given character to their position
-bool View::updateEntityPosition(int x, int y, int entity)
+bool View::updateEntityPosition(int x, int y, int member)
 {
-	if (entity == PLAYER)
+	if (member == PLAYER)
 	{
 		gBikeTexture.render(x, y, NULL, gRenderer);
 	}
-	else if (entity == ENEMY)
+	else if (member == ENEMY)
 	{
 		gBadGuyTexture.render(x, y, NULL, gRenderer);
 	}
