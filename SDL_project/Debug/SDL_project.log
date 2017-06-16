@@ -1,8 +1,10 @@
 ﻿  View.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
   Main.cpp
+  Ltexture.cpp
   GameModel.cpp
+  Entity.cpp
   Controller.cpp
+c:\users\jjohn\documents\visual studio 2015\projects\sdl_project\sdl_project\sourcefiles\controller.cpp(136): warning C4018: '>': signed/unsigned mismatch
+  Generating Code...
   SDL_project.vcxproj -> C:\Users\jjohn\documents\visual studio 2015\Projects\SDL_project\Debug\SDL_project.exe
   SDL_project.vcxproj -> C:\Users\jjohn\documents\visual studio 2015\Projects\SDL_project\Debug\SDL_project.pdb (Partial PDB)

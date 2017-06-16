@@ -1,0 +1,12 @@
+﻿  Controller.cpp
+sourceFiles\Controller.cpp(1): fatal error C1083: Cannot open include file: 'Controller.h': No such file or directory
+  Entity.cpp
+sourceFiles\Entity.cpp(1): fatal error C1083: Cannot open include file: 'Entity.h': No such file or directory
+  GameModel.cpp
+sourceFiles\GameModel.cpp(3): fatal error C1083: Cannot open include file: 'GameModel.h': No such file or directory
+  Ltexture.cpp
+sourceFiles\Ltexture.cpp(1): fatal error C1083: Cannot open include file: 'Ltexture.h': No such file or directory
+  Main.cpp
+sourceFiles\Main.cpp(1): fatal error C1083: Cannot open include file: 'View.h': No such file or directory
+  View.cpp
+sourceFiles\View.cpp(1): fatal error C1083: Cannot open include file: 'View.h': No such file or directory
