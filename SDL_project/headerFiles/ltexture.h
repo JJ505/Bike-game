@@ -3,7 +3,8 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <string>
-
+#ifndef LTEXTURE_H
+#define LTEXTURE_H
 class LTexture
 {
 public:
@@ -43,3 +44,4 @@ private:
 	int mWidth;
 	int mHeight;
 };
+#endif

@@ -25,6 +25,8 @@ LTexture gRoadTexture;
 LTexture gFarBackgroundTexture;
 LTexture gBadGuyTexture;
 LTexture gPausedTexture;
+LTexture gGameOverTexture;
+LTexture gVictoryTexture;
 
 //textures for quicktime events
 LTexture gGoodQuikTexture;
@@ -128,7 +130,16 @@ bool View::loadMedia()
 		printf("Failed to load paused image");
 		success = false;
 	}
-	
+	if (!gGameOverTexture.loadFromFile("resources/gameOver.png", gRenderer))
+	{
+		printf("Failed to load gameOVer image");
+		success = false;
+	}
+	if (!gVictoryTexture.loadFromFile("resources/victory.png", gRenderer))
+	{
+		printf("Failed to load victory image");
+		success = false;
+	}
 	//Load background texture
 	if( !gRoadTexture.loadFromFile( "resources/road.png" , gRenderer) )
 	{
@@ -306,9 +317,17 @@ bool View::renderQuickTimeLetter(int quickLetter, int x, int y)
 	return true;
 }
 
-bool View::renderPauseScreen()
+void View::renderPauseScreen()
 {
 	gPausedTexture.render(50, 50, NULL, gRenderer);
+}
 
-	return true;
+void View::renderGameOverScreen()
+{
+	gGameOverTexture.render(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 80, NULL, gRenderer);
+}
+
+void View::renderVictoryScreen()
+{
+	gVictoryTexture.render(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 80, NULL, gRenderer);
 }

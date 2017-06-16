@@ -41,6 +41,9 @@ void Controller::startGame() {
 			bool pressedCorrectButton = false;
 			bool gamePaused = false;
 
+			bool gameOver = false;
+			bool playerVictory = false;
+
 			//time values
 			Uint32 pausedTime = 0;
 			//Event handler
@@ -189,15 +192,42 @@ void Controller::startGame() {
 				view->renderQuicktime(quickRenderValue, player->getX()+50, player->getY()+30);
 				view->renderQuickTimeLetter(quicktimeButton, player->getX() + 50, player->getY() + 30);
 				
-				if (player->getX() >= view->getScreenWidth())
+				//checks if game is over
+				gameOver = gameModel->checkForGameOver(view->getScreenWidth());
+				//checks if player victory
+				playerVictory = gameModel->checkForPlayerVictory();
+				while (gameOver)
 				{
-					//display victory banner
-					//show menu to start over
-				}
-				if (enemy->getX() >= view->getScreenWidth())
-				{
-					//display defeat banner
-					//show men to start over
+					//press r to restart
+					SDL_Event t;
+
+					while (SDL_PollEvent(&t) != 0)
+					{
+						if (t.type == SDL_QUIT)
+						{
+							quit = true;
+							gameOver = false;
+						}
+						if (t.key.keysym.sym == SDLK_r && t.type == SDL_KEYDOWN)
+						{
+							//reset game
+							gameOver = false;
+							gameModel->resetPlayerAndEnemy();
+
+						}
+					}
+					if (playerVictory)
+					{
+						//show victory screen
+						view->renderVictoryScreen();
+					}
+					else
+					{
+						//show defeat screen
+						view->renderGameOverScreen();
+					}
+					
+					view->updateRender();
 				}
 
 				view->updateRender();

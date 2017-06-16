@@ -17,6 +17,11 @@ int Player::getY() {
 	return y;
 }
 
+void Player::setX(int x)
+{
+	this->x = x;
+}
+
 void Player::movePlayerForward(int movementSpeed) {
 	this->x += movementSpeed;
 

@@ -5,6 +5,7 @@
 #include <string>
 int spawnedEnemies;
 Uint32 timeSinceLastSpawn = 0;
+
 //Player* player;
 GameModel::GameModel()
 {
@@ -12,6 +13,7 @@ GameModel::GameModel()
 	//eventually show quicktime events and have them rotate
 	player = new Player(240, 190);
 	enemy = new Enemy(140, 330);
+	victory = false;
 }
 
 Player* GameModel::getPlayer()
@@ -22,6 +24,13 @@ Player* GameModel::getPlayer()
 Enemy* GameModel::getEnemy()
 {
 	return enemy;
+}
+
+bool GameModel::resetPlayerAndEnemy()
+{
+	player->setX(240);
+	enemy->setX(140);
+	return true;
 }
 
 bool GameModel::spawnQuickTime() {
@@ -55,5 +64,23 @@ bool GameModel::fireQuickTime(Uint32 pressedTime)
 	return false;
 }
 
+//returns true if game over and false if not
+bool GameModel::checkForGameOver(int viewScreenWidth)
+{
+	if (player->getX() >= viewScreenWidth - 200)
+	{
+		victory = true;
+		return true;
+	}
+	else if (enemy->getX() >= viewScreenWidth - 200)
+	{
+		return true;
+	}
+	return false;
+}
 
+bool GameModel::checkForPlayerVictory()
+{
+	return victory;
+}
 

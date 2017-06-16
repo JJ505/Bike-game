@@ -14,6 +14,10 @@ int Enemy::getY() {
 	return y;
 }
 
+void Enemy::setX(int x)
+{
+	this->x = x;
+}
 void Enemy::moveEnemyForward(int movementSpeed) {
 	this->x += movementSpeed;
 }

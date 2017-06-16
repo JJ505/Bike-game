@@ -6,9 +6,7 @@
 //TODO
 /**
 	
-	add win condition/animation
-	implement main menu screen
-	fix so pause pasues game time as well;
+	add sound 
 
 	animation
 	eventually have player be a little animated

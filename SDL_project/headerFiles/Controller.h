@@ -2,6 +2,8 @@
 #include <View.h>
 #include <GameModel.h>
 
+#ifndef CONTROLLER_H
+#define CONTROLLER_H
 
 const int QUICK_BUTTON_TEXTURES = 2;
 const int STD_QUIK_TEXTURE = 0;
@@ -21,3 +23,4 @@ public:
 	void startGame();
 
 };
+#endif

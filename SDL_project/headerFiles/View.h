@@ -1,7 +1,7 @@
 #pragma once
 
-
-
+#ifndef VIEW_H
+#define VIEW_H
 enum Entity
 {
 	PLAYER = 1,
@@ -40,6 +40,13 @@ public:
 	bool renderQuickTimeLetter(int quickLetter, int x, int y);
 
 	//render pause screen
-	bool renderPauseScreen();
+	void renderPauseScreen();
+
+	//render gameover screen
+	void renderGameOverScreen();
+
+	//render victory screen
+	void renderVictoryScreen();
 };
 
+#endif

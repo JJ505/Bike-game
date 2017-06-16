@@ -1,4 +1,6 @@
 #pragma once
+#ifndef ENEMY_H
+#define ENEMY_H
 class Enemy
 {
 private:
@@ -10,5 +12,7 @@ public:
 	int getX();
 	int getY();
 	void moveEnemyForward(int movementSpeed);
+	void setX(int x);
 	//have key press events for when enemy comes near player?
 };
+#endif
