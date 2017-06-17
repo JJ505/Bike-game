@@ -1,7 +1,7 @@
-#include <Ltexture.h>
+#include <Texture.h>
 
 
-LTexture::LTexture()
+Texture::Texture()
 {
 	//Initialize
 	mTexture = NULL;
@@ -9,13 +9,13 @@ LTexture::LTexture()
 	mHeight = 0;
 }
 
-LTexture::~LTexture()
+Texture::~Texture()
 {
 	//Deallocate
 	free();
 }
 
-bool LTexture::loadFromFile(std::string path, SDL_Renderer* gRenderer)
+bool Texture::loadFromFile(std::string path, SDL_Renderer* gRenderer)
 {
 	//Get rid of preexisting texture
 	free();
@@ -56,7 +56,7 @@ bool LTexture::loadFromFile(std::string path, SDL_Renderer* gRenderer)
 	return mTexture != NULL;
 }
 
-void LTexture::free()
+void Texture::free()
 {
 	//Free texture if it exists
 	if (mTexture != NULL)
@@ -68,25 +68,8 @@ void LTexture::free()
 	}
 }
 
-void LTexture::setColor(Uint8 red, Uint8 green, Uint8 blue)
-{
-	//Modulate texture rgb
-	SDL_SetTextureColorMod(mTexture, red, green, blue);
-}
-
-void LTexture::setBlendMode(SDL_BlendMode blending)
-{
-	//Set blending function
-	SDL_SetTextureBlendMode(mTexture, blending);
-}
-
-void LTexture::setAlpha(Uint8 alpha)
-{
-	//Modulate texture alpha
-	SDL_SetTextureAlphaMod(mTexture, alpha);
-}
 //SDL_Renderer* gRenderer = NULL;
-void LTexture::render(int x, int y, SDL_Rect* clip, SDL_Renderer* gRenderer)
+void Texture::render(int x, int y, SDL_Rect* clip, SDL_Renderer* gRenderer)
 {
 	//Set rendering space and render to screen
 	SDL_Rect renderQuad = { x, y, mWidth, mHeight };
@@ -102,12 +85,12 @@ void LTexture::render(int x, int y, SDL_Rect* clip, SDL_Renderer* gRenderer)
 	SDL_RenderCopy(gRenderer, mTexture, clip, &renderQuad);
 }
 
-int LTexture::getWidth()
+int Texture::getWidth()
 {
 	return mWidth;
 }
 
-int LTexture::getHeight()
+int Texture::getHeight()
 {
 	return mHeight;
 }

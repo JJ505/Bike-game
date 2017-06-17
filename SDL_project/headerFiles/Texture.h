@@ -3,31 +3,22 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <string>
-#ifndef LTEXTURE_H
-#define LTEXTURE_H
-class LTexture
+#ifndef TEXTURE_H
+#define TEXTURE_H
+class Texture
 {
 public:
 	//Initializes variables
-	LTexture();
+	Texture();
 
 	//Deallocates memory
-	~LTexture();
+	~Texture();
 
 	//Loads image at specified path
 	bool loadFromFile(std::string path, SDL_Renderer* gRenderer);
 
 	//Deallocates texture
 	void free();
-
-	//Set color modulation
-	void setColor(Uint8 red, Uint8 green, Uint8 blue);
-
-	//Set blending
-	void setBlendMode(SDL_BlendMode blending);
-
-	//Set alpha modulation
-	void setAlpha(Uint8 alpha);
 
 	//Renders texture at given point
 	void render(int x, int y, SDL_Rect* clip = NULL, SDL_Renderer* gRenderer = NULL);

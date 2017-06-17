@@ -3,7 +3,7 @@
 #include <SDL_image.h>
 #include <stdio.h>
 #include <string>
-#include <Ltexture.h>
+#include <texture.h>
 //Screen dimension constants
 const int SCREEN_WIDTH = 1100;
 const int SCREEN_HEIGHT = 700;
@@ -20,23 +20,23 @@ const int ROAD_FRAMES = 2;
 SDL_Rect gSpriteClips[ROAD_FRAMES];
 
 //Scene textures
-LTexture gBikeTexture;
-LTexture gRoadTexture;
-LTexture gFarBackgroundTexture;
-LTexture gBadGuyTexture;
-LTexture gPausedTexture;
-LTexture gGameOverTexture;
-LTexture gVictoryTexture;
+Texture gBikeTexture;
+Texture gRoadTexture;
+Texture gFarBackgroundTexture;
+Texture gBadGuyTexture;
+Texture gPausedTexture;
+Texture gGameOverTexture;
+Texture gVictoryTexture;
 
 //textures for quicktime events
-LTexture gGoodQuikTexture;
-LTexture gBadQuikTexture;
-LTexture gUntimelyQuikTexture;
-LTexture gStdQuikTexture;
+Texture gGoodQuikTexture;
+Texture gBadQuikTexture;
+Texture gUntimelyQuikTexture;
+Texture gStdQuikTexture;
 
 //letters for quicktime events
-LTexture gLetterQ;
-LTexture gLetterE;
+Texture gLetterQ;
+Texture gLetterE;
 
 View::View() {
 

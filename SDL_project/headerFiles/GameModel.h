@@ -30,5 +30,8 @@ public:
 	//check for player victory
 	bool checkForPlayerVictory();
 
+	//reset game victory bool
+	void resetVictory();
+
 };
 #endif

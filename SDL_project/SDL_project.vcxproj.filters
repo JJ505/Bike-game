@@ -24,21 +24,18 @@
     <ClCompile Include="sourceFiles\GameModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sourceFiles\Ltexture.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="sourceFiles\View.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sourceFiles\Entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="sourceFiles\Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headerFiles\Controller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="headerFiles\Ltexture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="headerFiles\View.h">
@@ -48,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="headerFiles\Entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headerFiles\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

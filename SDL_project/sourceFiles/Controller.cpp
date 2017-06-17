@@ -226,6 +226,7 @@ void Controller::startGame() {
 						//show defeat screen
 						view->renderGameOverScreen();
 					}
+					gameModel->resetVictory();
 					
 					view->updateRender();
 				}

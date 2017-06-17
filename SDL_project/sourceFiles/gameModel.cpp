@@ -84,3 +84,7 @@ bool GameModel::checkForPlayerVictory()
 	return victory;
 }
 
+void GameModel::resetVictory()
+{
+	victory = false;
+}
